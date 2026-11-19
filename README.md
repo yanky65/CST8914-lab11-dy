@@ -1,5 +1,8 @@
 # CST8914 Lab 11: Accessible Accordion
 
+Name: David Yin
+ID: 041289921
+
 This lab updates a starter accordion using the [W3C ARIA Authoring Practices Guide accordion pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/). Open [accordion.html](accordion.html) in a browser to run it.
 
 ## Lab questions
