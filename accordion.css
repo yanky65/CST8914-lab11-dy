@@ -11,6 +11,10 @@
   margin: 50px auto;
 }
 
+.accordion-heading {
+  margin: 0;
+}
+
 button.accordion {
   width: 100%;
   background-color: whitesmoke;
@@ -24,29 +28,53 @@ button.accordion {
   transition: background-color 0.2s linear;
 }
 
-button.accordion:after {
-  font-family: FontAwesome;
-  content: "\f150";
-  font-family: "fontawesome";
-  font-size: 18px;
+.accordion-icon {
   float: right;
 }
 
-button.accordion.is-open:after {
+.accordion-icon::before {
+  content: "\f150";
+  font-family: FontAwesome;
+  font-size: 18px;
+}
+
+button.accordion[aria-expanded="true"] .accordion-icon::before {
   content: "\f151";
 }
 
 button.accordion:hover,
-button.accordion.is-open {
+button.accordion[aria-expanded="true"] {
   background-color: #ddd;
 }
 
+button.accordion:focus {
+  background-color: #dbeafe;
+  outline: 3px solid #174ea6;
+  outline-offset: -3px;
+}
+
 .accordion-content {
+  display: grid;
+  grid-template-rows: 1fr;
   background-color: white;
   border-left: 1px solid whitesmoke;
   border-right: 1px solid whitesmoke;
   padding: 0 20px;
-  max-height: 0;
+  transition: grid-template-rows 0.2s ease-in-out;
+}
+
+.accordion-content[inert] {
+  grid-template-rows: 0fr;
+}
+
+.accordion-content-inner {
+  min-height: 0;
   overflow: hidden;
-  transition: max-height 0.2s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button.accordion,
+  .accordion-content {
+    transition: none;
+  }
 }
